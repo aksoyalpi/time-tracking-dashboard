@@ -1,11 +1,15 @@
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  padding: 0;
+  padding: 50px 0 0 0;
   background-color: hsl(226, 43%, 10%);
   color: white;
   display: grid;
   place-content: center;
-  height: 100vh;
+  height: 100%;
   font-family: "Rubik", serif;
   font-size: 18px;
 }
@@ -16,6 +20,9 @@ p {
 }
 
 .container {
+  height: 100%;
+  display: grid;
+  gap: 20px;
   max-width: 400px;
 }
 
@@ -68,15 +75,10 @@ img {
   color: white;
 }
 
-.timeframe-selection p:hover {
-  color: white;
-}
-
 .activity[data-title=work] {
   background-color: hsl(15, 100%, 70%);
   z-index: 0;
   padding: 1px 0 0 0;
-  margin-top: 20px;
   position: relative;
 }
 
@@ -84,7 +86,6 @@ img {
   background-color: hsl(195, 74%, 62%);
   z-index: 0;
   padding: 1px 0 0 0;
-  margin-top: 20px;
   position: relative;
 }
 
@@ -92,7 +93,6 @@ img {
   background-color: hsl(348, 100%, 68%);
   z-index: 0;
   padding: 1px 0 0 0;
-  margin-top: 20px;
   position: relative;
 }
 
@@ -100,7 +100,6 @@ img {
   background-color: hsl(145, 58%, 55%);
   z-index: 0;
   padding: 1px 0 0 0;
-  margin-top: 20px;
   position: relative;
 }
 
@@ -108,7 +107,6 @@ img {
   background-color: hsl(264, 64%, 52%);
   z-index: 0;
   padding: 1px 0 0 0;
-  margin-top: 20px;
   position: relative;
 }
 
@@ -116,7 +114,6 @@ img {
   background-color: hsl(43, 84%, 65%);
   z-index: 0;
   padding: 1px 0 0 0;
-  margin-top: 20px;
   position: relative;
 }
 
@@ -138,12 +135,15 @@ img {
   padding: 30px 20px 40px 30px;
   background-color: hsl(235, 46%, 20%);
   border-radius: 16px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2;
   align-items: center;
   justify-content: space-between;
 }
 
 .menu {
+  grid-row: 1;
+  grid-column: 2;
   color: hsl(236, 100%, 87%);
   margin: 0;
   padding: 0;
@@ -163,11 +163,14 @@ h3 {
   font-size: 32px;
   font-weight: 300;
   color: white;
+  grid-column: 1;
 }
 
 #previous {
   font-size: 16px;
   font-weight: 300;
+  grid-row: 2;
+  grid-column: 2;
 }
 
 .menu-container {
@@ -179,6 +182,72 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+@media (min-width: 1100px) {
+  .container {
+    grid-template-columns: 4;
+    grid-template-rows: 2;
+    grid-template-areas: "profile work play study" "profile exercise social self-care";
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+  }
+  .card {
+    width: 250px;
+  }
+  .profile {
+    grid-area: profile;
+  }
+  .activity {
+    grid-area: attr(data-title);
+  }
+  .profile-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .name {
+    font-size: 40px;
+  }
+  .timeframe-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+  }
+  .information {
+    display: grid;
+    grid-template-columns: 2;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #current {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  .menu {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  #previous {
+    grid-row: 3;
+    grid-column: 1;
+  }
+}
+.information:hover {
+  background-color: hsl(235, 45%, 61%);
+  cursor: pointer;
+}
+
+.menu:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.timeframe-selection p:hover {
+  cursor: pointer;
+  color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -6,18 +6,21 @@
     background-color: $color;
     z-index: 0;
     padding: 1px 0 0 0;
-    margin-top: 20px;
     position: relative;
+}
+
+html {
+    height: 100%;
 }
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 50px 0 0 0;
     background-color: colors.$navy950;
     color: white;
     display: grid;
     place-content: center;
-    height: 100vh;
+    height: 100%;
     font-family: typo.$font;
     font-size: typo.$font-size-card-title;
 }
@@ -28,6 +31,9 @@ p {
 }
 
 .container {
+    height: 100%;
+    display: grid;
+    gap: 20px;
     max-width: 400px;
 }
 
@@ -87,9 +93,7 @@ img {
     }
 }
 
-.timeframe-selection p:hover {
-    color: white;
-}
+
 
 .activity[data-title="work"] {
     @include card;
@@ -133,12 +137,15 @@ img {
     padding: 30px 20px 40px 30px;
     background-color: colors.$navy900;
     border-radius: layout.$border-radius;
-    display: flex;
+    display: grid;
+    grid-template-columns: 2;
     align-items: center;
     justify-content: space-between;
 }
 
 .menu {
+    grid-row: 1;
+    grid-column: 2;
     color: colors.$navy200;
     margin: 0;
     padding: 0;
@@ -158,11 +165,14 @@ h3 {
     font-size: 32px;
     font-weight: typo.$small-weight;
     color: white;
+    grid-column: 1;
 }
 
 #previous {
     font-size: 16px;
     font-weight: typo.$small-weight;
+    grid-row: 2;
+    grid-column: 2;
 }
 
 .menu-container {
@@ -176,3 +186,84 @@ footer {
     width: 100%;
 }
 
+
+@media (min-width: 1100px) {
+    .container {
+        grid-template-columns: 4;
+        grid-template-rows: 2;
+        grid-template-areas: 
+        "profile work play study"
+        "profile exercise social self-care";
+        gap: 20px;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .card{
+        width: 250px;
+    }
+
+    .profile {
+        grid-area: profile;
+    }
+
+    .activity{
+        grid-area: attr(data-title);
+    }
+
+    .profile-infos {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    .name {
+        font-size: 40px;
+    }
+
+    .timeframe-selection {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px;
+    }
+
+    .information {
+        display: grid;
+        grid-template-columns: 2;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #current {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .menu {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    #previous {
+        grid-row: 3;
+        grid-column: 1;
+    }
+
+}
+
+.information:hover{
+    background-color: colors.$purple500;
+    cursor: pointer;
+}
+
+.menu:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.timeframe-selection p:hover {
+    cursor: pointer;
+    color: white;
+}
