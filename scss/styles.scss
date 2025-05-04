@@ -1,0 +1,178 @@
+@use "colors";
+@use "typo";
+@use "layout";
+
+@mixin card($color: colors.$orange300) {
+    background-color: $color;
+    z-index: 0;
+    padding: 1px 0 0 0;
+    margin-top: 20px;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: colors.$navy950;
+    color: white;
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    font-family: typo.$font;
+    font-size: typo.$font-size-card-title;
+}
+
+p {
+    color: colors.$navy200;
+    margin: 0;
+}
+
+.container {
+    max-width: 400px;
+}
+
+.card {
+    background-color: colors.$navy900;
+    border-radius: layout.$border-radius;
+}
+
+.profile-infos {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: colors.$purple600;
+    border-radius: layout.$border-radius;
+}
+
+img {
+    height: 75px;
+    width: 75px;
+    border-radius: 100px;
+    border: 3px solid white;
+}
+
+.name {
+    margin: 0;
+    color: white;
+    font-size: 28px;
+    font-weight: typo.$small-weight;
+}
+
+.timeframe-selection {
+    display: flex;
+    padding: 30px 0;
+    justify-content: space-around;
+
+    p {
+        font-size: 18px;
+    }
+}
+
+.timeframe-selection[data-timeframe="daily"] {
+    :nth-child(1) {
+        color: white;
+    }
+}
+
+.timeframe-selection[data-timeframe="weekly"] {
+    :nth-child(2) {
+        color: white;
+    }
+}
+
+.timeframe-selection[data-timeframe="monthly"] {
+    :nth-child(3) {
+        color: white;
+    }
+}
+
+.timeframe-selection p:hover {
+    color: white;
+}
+
+.activity[data-title="work"] {
+    @include card;
+}
+
+.activity[data-title="play"] {
+    @include card($color: colors.$blue300);
+}
+
+.activity[data-title="study"] {
+    @include card($color: colors.$pink400);
+}
+
+.activity[data-title="exercise"] {
+    @include card($color: colors.$green400);
+}
+
+.activity[data-title="social"] {
+    @include card($color: colors.$purple700);
+}
+
+.activity[data-title="self-care"] {
+    @include card($color: colors.$yellow300);
+}
+
+.top-icon {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    height: 75px;
+    width: 75px;
+    opacity: 0.2;
+    z-index: -1;
+    margin: 0;
+    color: black;
+    transform: rotate(45deg);
+}
+
+.information {
+    margin-top: 40px;
+    padding: 30px 20px 40px 30px;
+    background-color: colors.$navy900;
+    border-radius: layout.$border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu {
+    color: colors.$navy200;
+    margin: 0;
+    padding: 0;
+    justify-self: end;
+    width: 30px;
+    height: 30px;
+}
+
+h3 {
+    font-size: typo.$font-size-card-title;
+    font-weight: typo.$bold-weight;
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+#current {
+    font-size: 32px;
+    font-weight: typo.$small-weight;
+    color: white;
+}
+
+#previous {
+    font-size: 16px;
+    font-weight: typo.$small-weight;
+}
+
+.menu-container {
+    display: grid;
+    gap: 20px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
